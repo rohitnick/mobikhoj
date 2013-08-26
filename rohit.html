@@ -1,0 +1,123 @@
+<html>
+<head>
+
+
+<meta name="txtweb-appkey" content="34d45e73-d2cc-434d-b3eb-7bde44307fb5">
+<style type="text/css">
+<!--
+.style5 {font-family: "Lucida Sans"; font-weight: bold; font-style: italic; }
+-->
+</style>
+</head>
+<body>
+
+
+</form>
+<table width="336" border="1" bordercolor="#FFFFFF">
+  <tr>
+    <td width="302" height="126">
+	<form action="http://mikikhoj.com/mobile/save" method="post">
+	<p align="center">&nbsp;      </p>
+	<p align="center"><span class="style5">Mob NO :</span>
+	  <input type="text" id="send" name="send" >
+        </p>
+	<p align="center"><span class="style5">Message</span>:
+        <textarea id="msg" name="msg" ></textarea>
+        </p>
+		<p align="center"><span class="style5">destination</span>:
+        <textarea id="dest" name="dest" ></textarea>
+        </p>
+		<p align="center"><span class="style5">Sent Time</span>:
+        <textarea id="stime" name="stime" ></textarea>
+        </p>
+      <p align="center"><br/>
+          <input name="submit" type="submit">
+      </p>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<form action="http://mikikhoj.com/mobile/saveAnswer" method="post">
+	<p align="center"><span class="style5">Mob NO :</span>
+	  <input type="text" id="unumber" name="unumber"  >
+        </p>
+	<p align="center"><span class="style5">Message</span>:
+        <textarea id="message" name="message" ></textarea>
+        </p>
+		<p align="center"><span class="style5">Moderator Name: </span>
+	  <input type="text" id="mod" name="mod" >
+        </p>
+      <p align="center"><br/>
+          <input name="submit" type="submit">
+      </p>
+      </form>
+	</td>
+  </tr>
+  <tr>
+    <td height="192"><div align="center">
+	<form action="http://mikikhoj.com/welcome/signup" method="post">
+	  <p align="center"><span class="style5">Username:</span>
+	    <input type="text" id="logEmail" name="logEmail"  />
+	    </p>
+	  <p align="center">        <span class="style5">Password:</span>
+        <input type="password" id="logPassword" name="logPassword"  />
+      </p>
+      <p align="center"><span class="style5">LogName       :</span>
+        <input type="text" id="logName" name="logName"  />
+      </p>
+      <p align="center">        <span class="style5">Secret Cod:</span>
+        <input type="text" id="logCode" name="logCode" />
+        <br/>
+        </p>
+      <p align="center">
+        <input name="submit2" type="submit">
+      </p>
+      <p align="center">&nbsp;</p>
+	</form>
+	</div></td>
+  </tr>
+</table>
+<br/>
+<br/>
+<br/>
+
+<form action="http://api.txtweb.com/v1/push" method="post">
+	<p align="center"><span class="style5">Mob NO :</span>
+	  <input type="text" id="txtweb-mobile" name="txtweb-mobile"  >
+        </p>
+	<p align="center"><span class="style5">Message</span>:
+        <textarea id="txtweb-message" name="txtweb-message" ></textarea>
+        </p>
+		<p align="center"><span class="style5">pub key: </span>
+	  <input type="text" id="txtweb-pubkey" name="txtweb-pubkey" >
+        </p>
+      <p align="center"><br/>
+          <input name="submit" type="submit">
+      </p>
+</form>
+</body>
+</html>
+
+Rahul : 6e367d0b-3956-43a7-bf67-e9273fd3676a
+Rohit : e6ad15ca-95a5-4a97-b84c-364dabfb29bf
+Priya : bd476d4e-06f3-4f6d-8e86-0d5873f53bbe
+Ankit : 9813dd44-1836-4209-a28f-e109649d0290
+nick :  8f2d970e-87cd-4ef3-9dce-fb317eada1e0
+abhi : 83e84892-8b9e-42fb-a13d-5abb8e296d48
+neha : 3f928bac-b44c-44e3-bf5a-37d9b2d4b20c
+mobikhoj - 67833714-7b07-452e-aec3-9d191b2dd032
+
+public function save()
+	{	
+		$mobileNumber =  $_REQUEST['txtweb-mobile'];
+		$message = $_REQUEST['txtweb-message'];
+		$this->mobilemodel->saveMessage($mobileNumber,$message);
+		$this->load->view('mobile/save_view');
+
+                $to = "icircles.in@gmail.com,";
+                $from = "icircles.in@gmail.com";
+                $headers = "From:" . $from. "\r\n";
+				$headers .= 'Bcc: rohit.nick@facebook.com,rahul29march@facebook.com,rohitagarwal88@facebook.com,ankittripathi16@facebook.com,fanaticsammy@facebook.com,bhaa.ONE@facebook.com'. "\r\n";
+                mail($to,$mobileNumber,$message,$headers);
+	}

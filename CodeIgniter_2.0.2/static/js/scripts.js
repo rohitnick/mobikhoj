@@ -1,0 +1,32 @@
+function showInfoMsg(id,msg)
+{ 
+	$(id).fadeOut();
+	$(id).html(msg);
+	$(id).fadeIn("4000");
+}
+
+$(document).ready(function()
+{															
+	$(".input_text").val("");
+	$(".input_text").focus(function()
+	{
+		if($(this).attr('value')=="")
+	  	{
+			$(this).keypress(function()
+			{
+				$(this).next().fadeOut('100');
+			});
+	  	}
+	}); 
+	$(".input_text").blur(function()
+	{
+		if($(this).attr('value')=="")
+		  {
+			$(this).next().fadeIn('1300');
+		  }
+	});
+	$(".input_label").click(function()
+	{
+		$(this).prev().focus();											  
+	});
+});

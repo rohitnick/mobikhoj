@@ -1,0 +1,4 @@
+RewriteEngine on
+#RewriteRule / static/servicedown.html
+RewriteCond $1 !^(index\.php|images|robots\.txt|static|graphics|jscripts|stylesheet|ckeditor|xd_receiver\.htm)
+RewriteRule ^(.*)$ /index.php/$1 [L]
